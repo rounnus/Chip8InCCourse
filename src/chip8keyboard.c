@@ -26,15 +26,18 @@ int chip8_keyboard_map(struct chip8_keyboard* keyboard, char key)
 
 void chip8_keyboard_down(struct chip8_keyboard* keyboard, int key)
 {
+    chip8_keyboard_ensure_in_bounds(key);
     keyboard->keyboard[key] = true;
 }
 
 void chip8_keyboard_up(struct chip8_keyboard* keyboard, int key)
 {
+    chip8_keyboard_ensure_in_bounds(key);
     keyboard->keyboard[key] = false;
 }
 
 bool chip8_keyboard_is_down(struct chip8_keyboard* keyboard, int key)
 {
+    chip8_keyboard_ensure_in_bounds(key);
     return keyboard->keyboard[key];
 }
